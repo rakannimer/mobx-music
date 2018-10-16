@@ -1,5 +1,6 @@
 import { InstrumentName, Player, instrument } from "soundfont-player";
 import { observable, ObservableMap } from "mobx";
+import INSTRUMENTS from "./constants/INSTRUMENTS";
 
 export { InstrumentName, Player };
 
@@ -43,6 +44,10 @@ const getInitialState = () => {
   >;
   const playingNotes = observable.map({}) as ObservableMap<string, Player>;
   return { instruments, playingNotes };
+};
+
+export const getInstrumentNames = () => {
+  return INSTRUMENTS;
 };
 
 export const getInstruments = async (instrumentNames: InstrumentName[]) => {
