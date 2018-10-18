@@ -4,6 +4,9 @@ import INSTRUMENTS from "./constants/INSTRUMENTS";
 
 export { InstrumentName, Player };
 
+export type PlayingNotesMap = ObservableMap<string, Player>;
+export type InstrumentsMap = ObservableMap<InstrumentName, NotePlayer>;
+
 export const getAudioContext = () => {
   const AudioContext =
     // @ts-ignore
@@ -38,11 +41,8 @@ export type NotePlayer = {
   stop: (noteName?: string) => void;
 };
 const getInitialState = () => {
-  const instruments = observable.map({}) as ObservableMap<
-    InstrumentName,
-    NotePlayer
-  >;
-  const playingNotes = observable.map({}) as ObservableMap<string, Player>;
+  const instruments = observable.map({}) as InstrumentsMap;
+  const playingNotes = observable.map({}) as PlayingNotesMap;
   return { instruments, playingNotes };
 };
 
